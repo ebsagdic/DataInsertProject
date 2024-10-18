@@ -1,0 +1,6 @@
+@DataInsertProject_HostAddress = http://localhost:5210
+
+GET {{DataInsertProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
