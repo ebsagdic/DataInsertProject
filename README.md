@@ -15,7 +15,7 @@
 2. Gerekli NuGet paketlerini yükleyin:
     "dotnet restore"
 
-3. `appsettings.json` dosyasını düzenleyin ve Veritabanı/RabbitMQ bağlantı ayarlarını kendi ortamınıza göre yapılandırın.
+3. `appsettings.json` dosyasını düzenleyin ve Veritabanı/RabbitMQ/Redis bağlantı ayarlarını kendi ortamınıza göre yapılandırın.
 
 4. Veritabanını oluşturun ve migrationları uygulayın:
     "dotnet ef database update"
