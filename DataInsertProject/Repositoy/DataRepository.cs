@@ -19,5 +19,13 @@ namespace DataInsertProject.Repositoy
             await _context.DataModels.AddRangeAsync(dataModels);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<DataModel>> GetAllDataAsync()
+        {
+           return await _context.Set<DataModel>().ToListAsync();
+
+        }
+
+
     }
 }

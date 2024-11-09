@@ -6,11 +6,11 @@ namespace DataInsertProject.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DataInsertController : ControllerBase
+    public class DataController : ControllerBase
     {
         private readonly DataService _dataService;
 
-        public DataInsertController(DataService dataService)
+        public DataController(DataService dataService)
         {
             _dataService = dataService;
         }
@@ -20,6 +20,13 @@ namespace DataInsertProject.Controllers
         {
             await _dataService.ProcessDataAsync(dataModels);
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetData()
+        {
+            var data = await _dataService.GetCachedDataAsync();
+            return Ok(data);
         }
     }
 }
