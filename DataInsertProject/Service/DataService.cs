@@ -19,6 +19,7 @@ namespace DataInsertProject.Service
             _repository = repository;
         }
 
+
         public async Task<IEnumerable<DataModel>> GetCachedDataAsync()
         {
             var cacheKey = "dataModels";
