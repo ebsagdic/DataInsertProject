@@ -9,8 +9,9 @@ using System.Text.Json;
 
 namespace DataInsertProject.Consumers
 {
-    public class DataConsumer : IHostedService
+    public class DataConsumer : IHostedService, IDisposable
     {
+        //Bu alan fields alanıdır, field'lar (sınıf üyeleri), metodlar içinde atama yapılarak güncellenebilir ve tüm metodlar tarafından kullanılabilirler.
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private IModel _channel;
         private IConnection _connection;
@@ -18,6 +19,7 @@ namespace DataInsertProject.Consumers
 
         public DataConsumer(IServiceScopeFactory serviceScopeFactory)
         {
+            //IServiceScopeFactory ASP.NET Core DI sisteminin bir parçasıdır ve genellikle scoped service'leri yönetmek için kullanılır.
             _serviceScopeFactory = serviceScopeFactory;
         }
 
@@ -55,6 +57,12 @@ namespace DataInsertProject.Consumers
             _channel?.Close();
             _connection?.Close();
             return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            _channel.Dispose();
+            _connection?.Dispose();
         }
     }
 
